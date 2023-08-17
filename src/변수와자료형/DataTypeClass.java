@@ -16,6 +16,8 @@ public class DataTypeClass {
         int iNum;   // 4 Byte
         long lNum;  // 8 byte
 
+        // 테스트
+
         // 실수형 선언
         float fNum;
         double dNum;
