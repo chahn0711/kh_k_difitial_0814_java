@@ -6,23 +6,45 @@ package 중복없는로또번호;
 // 배열은 6개
 // 반복횟수는 정할 수 없음 (while(true) ==> 탈출 조건이 있어야 함 (중복되지 않은 번호 6개가 저장되면 break)
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 public class RandomLotto {
     public static void main(String[] args) {
-        int[] lotto = new int[6];
-        int val, index = 0;
-        boolean isExist = false; // 중복 제거
+//        int[] lotto = new int[6];
+//        int tmp, index = 0; // 임시 로또 번호
+//        boolean isExist = false;
+//
+//        while (true) {
+//            tmp = (int)((Math.random() * 45) +1);
+//            for (int i = 0; i < lotto.length; i++) {
+//                if (lotto[i] == tmp) isExist = true;
+//            }
+//            if(!isExist) lotto[index++] = tmp;
+//            if(index == 6) break;
+//            isExist = false;
+//        }
+//        for(int e : lotto) System.out.print(e + " ");
+
+        // ArrayList
+//        List<Integer> list = new ArrayList<>();
+//        int tmp;
+//        while (true) {
+//            tmp = (int) ((Math.random() * 45) + 1);
+//            if(!list.contains(tmp)) {
+//                list.add(tmp);
+//            }
+//            if(list.size() == 6) break;
+//        }
+//        System.out.println(list);
+        // set : 자바에서 사용 집합 개념
+        HashSet<Integer> set = new HashSet<>();
         while (true) {
-            val = (int)((Math.random() * 45) +1);
-            for (int i = 0; i < 6; i++) {
-                if (lotto[i] == val) isExist = true;
-            }
-            if(!isExist) lotto[index++] = val;
-            if(index == 6) break;
-            isExist = false;
+            int tmp = (int) ((Math.random() * 45) + 1);
+            set.add(tmp);
+            if (set.size() == 6) break;
         }
-        for(int i = 0; i < 6; i++) {
-            System.out.print(lotto[i] + " ");
-        }
-        System.out.println();
+        System.out.println(set);
     }
 }
