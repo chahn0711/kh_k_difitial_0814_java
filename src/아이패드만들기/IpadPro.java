@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import static java.lang.Thread.sleep;
+
 public class IpadPro {
     int screen; // 11인치, 12.9인치
     int color; // 스페이스그레이, 실버
@@ -82,5 +84,30 @@ public class IpadPro {
         String[] memStr = {"", "128", "256", "512", "1024"};
         String netStr = (network == 1) ? "W" : "C";
         serialNum = "iPad" + screenStr + memStr[memory] + netStr + productDate; // 일련번호 생성
+    }
+    // 제품 구매가 완료되면 출고까지 30초 대기 이후 출고 하기(?)
+    void progressPad() throws InterruptedException {
+        int cnt = 0;
+        while (true) {
+            sleep(300);
+            cnt++;
+            System.out.print(" << iPad Pro 제작 중 : [" + cnt + "%] >>");
+            System.out.print("\r");
+            if(cnt >= 100) break;
+        }
+    }
+    void productPad() { // 상수 만드는 방법
+        final String[] screenType = {"", "11인치", "12.9인치"};
+        final String[] colorType = {"", "스페이스그레이", "실버"};
+        final String[] memType = {"", "128GB", "256GB", "512GB", "1TB"};
+        final String[] netType = {"", "Wi-Fi", "Wi-Fi + Cellular"};
+        System.out.println("=".repeat(5) + "iPad Pro 사양" + "=".repeat(5));
+        System.out.println("화면 크기 : " + screenType[screen]);
+        System.out.println("제품 색상 : " + colorType[color]);
+        System.out.println("제품 용량 : " + memType[memory]);
+        System.out.println("네트워크 : " + netType[network]);
+        System.out.println("이름 : " + name);
+        System.out.println("일련번호 : " + serialNum);
+        System.out.println("-".repeat(40));
     }
 }
