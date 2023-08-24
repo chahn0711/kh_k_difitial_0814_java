@@ -12,7 +12,7 @@ public class BuyerEx {
         while (true) {
             System.out.print("[1]TV [2]Computer [3]Audio [4]quit : ");
             int sel = sc.nextInt();
-            switch (sel) {
+             switch (sel) {
                 case 1 :
                     buyer.buy(tv);
                     buyer.viewInfo();
