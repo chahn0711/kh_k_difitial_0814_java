@@ -7,6 +7,22 @@ package Math클래스;
 public class MathClass {
     public static void main(String[] args) {
         System.out.println((int)Math.random() * 100); // 0 ~ 99
-
+        // ceil() : 소수점이하가 있으면 무조건 올림
+        System.out.println(Math.ceil(10.0));
+        System.out.println(Math.ceil(10.1));
+        System.out.println(Math.ceil(10.00000001));
+// floor() : 소수점 이하를 무조건 날림
+        System.out.println(Math.floor(10.0));
+        System.out.println(Math.floor(10.9));
+        System.out.println(Math.floor(10.00000001));
+// round() : 반올림 : 소수점 첫째 자리에서 반올림
+        System.out.println(Math.round(10.0));
+        System.out.println(Math.round(10.4999));
+        System.out.println(Math.round(10.5));
+// max()와 min()
+        int x = 10;
+        int y = 20;
+        System.out.println(Math.max(x, y));
+        System.out.println(Math.min(x, y));
     }
 }
