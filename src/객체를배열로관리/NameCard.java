@@ -21,4 +21,10 @@ public class NameCard {
     public void setAge(int age) {
         this.age = age;
     }
+    public void printInfo() {
+        System.out.println("이름 : " + name);
+        System.out.println("나이 : " + age);
+        System.out.println("연락처 : " + phone);
+        System.out.println("메일 : " + mail);
+    }
 }
