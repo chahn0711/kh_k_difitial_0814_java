@@ -25,7 +25,7 @@ public class CarMain {
         }
         car.setMode(isMode); // 모드 ON/OFF
         int moveCnt = car.getMovingCnt(passCnt); // 승객의 수로 이동 횟수 구하는 메서드
-        System.out.println("=".repeat(7) + car.getName() + "=".repeat(7));
+//        System.out.println("=".repeat(7) + car.getName() + "=".repeat(7));
         System.out.println("총 비용 : " + car.getTotalCost(dist[city], moveCnt));
         System.out.println("총 주유 횟수 : " + car.getRefuelCnt(dist[city], moveCnt));
         System.out.println("총 이동 시간 : " + car.getMovingTime(dist[city], moveCnt));

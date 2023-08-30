@@ -10,10 +10,6 @@ public abstract class Car {
 
     abstract void setMode(boolean isMode); // 상속 받은 각각의 자동차의 특수 기능
 
-    public String getName() {
-        return name;
-    }
-
     // 총 이동 횟수
     int getMovingCnt(int passCnt) { // 입력값으로 승객 수가 필요
         if(passCnt % seatCnt != 0) return (passCnt / seatCnt) + 1;
