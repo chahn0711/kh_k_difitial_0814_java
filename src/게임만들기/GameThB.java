@@ -1,11 +1,11 @@
 package 게임만들기;
 // 마법사 쓰레드 만들기
 public class GameThB extends Thread {
-    private Character warrior; // 외부에서 접근 허용을 막기 위해 private 설정
-    private Character wizard; // Character 클래스로 참조 변수를 생성
+    private Charactor warrior; // 외부에서 접근 허용을 막기 위해 private 설정
+    private Charactor wizard; // Character 클래스로 참조 변수를 생성
 
     // 생성자 호출 시 매개변수로 생성된 캐릭터의 객체를 넘겨 받음
-    public GameThB(Character warrior, Character wizard) {
+    public GameThB(Charactor warrior, Charactor wizard) {
         this.warrior = warrior; // 매개변수로 넘겨 받은 객체를 인스턴스 필드 변수에 넘겨 줌
         this.wizard = wizard;
     }

@@ -2,11 +2,11 @@ package 게임만들기;
 // Thread로 상속 받아 쓰레드 구현
 // GameThA : 전사 캐릭터로 간주
 public class GameThA extends Thread {
-    private Character warrior; // 외부에서 접근 허용을 막기 위해 private 설정
-    private Character wizard; // Character 클래스로 참조 변수를 생성
+    private Charactor warrior; // 외부에서 접근 허용을 막기 위해 private 설정
+    private Charactor wizard; // Character 클래스로 참조 변수를 생성
 
     // 생성자 호출 시 매개변수로 생성된 캐릭터의 객체를 넘겨 받음
-    public GameThA(Character warrior, Character wizard) {
+    public GameThA(Charactor warrior, Charactor wizard) {
         this.warrior = warrior; // 매개변수로 넘겨 받은 객체를 인스턴스 필드 변수에 넘겨 줌
         this.wizard = wizard;
     }
