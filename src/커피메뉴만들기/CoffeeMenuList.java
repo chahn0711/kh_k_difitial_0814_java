@@ -2,6 +2,7 @@ package 커피메뉴만들기;
 
 import 해시맵기본.HashBasic;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class CoffeeMenuList {
     // 문자열로 만들어진 키와 커피의 여러가지 정보가 포함된 객체를 값으로 사용
     static Map<String, MenuInfo> map = new HashMap<>();
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         makeMenu(); // 같은 클래스 내에 메뉴이기 때문에 생략 가능
         selectMenu();
     }
@@ -19,7 +20,7 @@ public class CoffeeMenuList {
         map.put("Espresso", new MenuInfo("Espresso", 3000, "Coffee", "진한커피"));
         map.put("Latte", new MenuInfo("Latte", 4000, "Coffee", "우유커피"));
     }
-    static void selectMenu() {
+    static void selectMenu() throws IOException {
         Scanner sc = new Scanner(System.in);
         String key = ""; // 키를 받기 위한 문자열 변수
         while (true) {
@@ -30,10 +31,10 @@ public class CoffeeMenuList {
                 case 1 :
                     System.out.println("=".repeat(10) + "메뉴 보기" + "=".repeat(10));
                     for(String e : map.keySet()) {
-                    System.out.println("메뉴 : " + map.get(e).name);
-                    System.out.println("가격 : " + map.get(e).price);
-                    System.out.println("분류 : " + map.get(e).category);
-                    System.out.println("설명 : " + map.get(e).descrpition);
+                    System.out.println("메뉴 : " + map.get(e).getName());
+                    System.out.println("가격 : " + map.get(e).getPrice());
+                    System.out.println("분류 : " + map.get(e).getCategory());
+                    System.out.println("설명 : " + map.get(e).getDescrpition());
                     System.out.println("-".repeat(28));
                 }
                     break;
@@ -42,10 +43,10 @@ public class CoffeeMenuList {
                     key = sc.next();
                     // 포함여부를 확인하는 메소드 containsKey(key) : map내에 해당 키가 있는지 확인하여 결과를 반환
                     if(map.containsKey(key)) {
-                        System.out.println("메뉴 : " + map.get(key).name);
-                        System.out.println("가격 : " + map.get(key).price);
-                        System.out.println("분류 : " + map.get(key).category);
-                        System.out.println("설명 : " + map.get(key).descrpition);
+                        System.out.println("메뉴 : " + map.get(key).getName());
+                        System.out.println("가격 : " + map.get(key).getPrice());
+                        System.out.println("분류 : " + map.get(key).getCategory());
+                        System.out.println("설명 : " + map.get(key).getDescrpition());
                     } else System.out.println("해당 메뉴가 존재하지 않습니다.");
                     break;
 
@@ -61,8 +62,8 @@ public class CoffeeMenuList {
                         String category = sc.nextLine();
                         sc.nextLine();
                         System.out.print("설명 입력 : ");
-                        String descrpition = sc.nextLine();
-                        map.put(key, new MenuInfo(key, price, category, descrpition));
+                        String descripition = sc.nextLine();
+                        map.put(key, new MenuInfo(key, price, category, descripition));
                     }
                     break;
                 case 4 :
@@ -85,19 +86,23 @@ public class CoffeeMenuList {
                         String category = sc.nextLine();
                         sc.nextLine();
                         System.out.print("설명 입력 : ");
-                        String descrpition = sc.nextLine();
+                        String descripition = sc.nextLine();
                         // 키값을 동일하고 값이 변경되는 경우에 replace()사용
-                        map.replace(key, new MenuInfo(key, price, category, descrpition));
+                        map.replace(key, new MenuInfo(key, price, category, descripition));
                     } else {
                         System.out.println("수정 할 메뉴가 없습니다.");
                     }
                     break;
                 case 6 :
                     System.out.println("메뉴를 종료 합니다.");
-                    System.exit(0); // 강제 종료(숫자 신경 안씀)
-
-                default:
-                    System.out.println("선택하신 메뉴가 없습니다.");
+                    FileOutputStream fos = new FileOutputStream("src/커피메뉴만들기/coffee.bin");
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(map);
+                    oos.flush();
+                    oos.close();
+                    fos.close();
+                    return;
+                default: System.out.println("선택하신 메뉴가 없습니다.");
             }
         }
     }
